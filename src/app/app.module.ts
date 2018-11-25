@@ -16,11 +16,19 @@ import {
   MatListModule,
   MatTableModule,
   MatPaginatorModule,
-  MatSortModule
+  MatSortModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { AddMemoryComponent } from './add-memory/add-memory.component';
 import { ViewMemoriesComponent } from './view-memories/view-memories.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -45,14 +53,24 @@ import { RouterModule } from '@angular/router';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    FormsModule,
+    MatNativeDateModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     RouterModule.forRoot([
       {
-        path: '', component: MyNavComponent, children: [
+        path: '',
+        component: MyNavComponent,
+        children: [
           { path: 'add-memory', component: AddMemoryComponent },
           { path: 'view-memories', component: ViewMemoriesComponent }
         ]
-      },
-    ]),
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
