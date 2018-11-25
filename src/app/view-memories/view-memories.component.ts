@@ -19,7 +19,7 @@ export class ViewMemoriesComponent implements OnInit, OnDestroy {
   dataSource: ViewMemoriesDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['date', 'text'];
+  displayedColumns = ['date', 'text', 'delete'];
   subscription: Subscription;
 
   constructor(private db: AngularFireDatabase) {}
