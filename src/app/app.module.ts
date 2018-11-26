@@ -24,6 +24,7 @@ import {
   MatNativeDateModule
 } from '@angular/material';
 import { AddMemoryComponent } from './add-memory/add-memory.component';
+import { HomeComponent } from './home/home.component';
 import { ViewMemoriesComponent } from './view-memories/view-memories.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -35,6 +36,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     AppComponent,
     MyNavComponent,
     AddMemoryComponent,
+    HomeComponent,
     ViewMemoriesComponent
   ],
   imports: [
@@ -66,8 +68,11 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
         path: '',
         component: MyNavComponent,
         children: [
+          { path: 'home', component: HomeComponent },
           { path: 'add-memory', component: AddMemoryComponent },
-          { path: 'view-memories', component: ViewMemoriesComponent }
+          { path: 'view-memories', component: ViewMemoriesComponent },
+          { path: '', redirectTo: 'home', pathMatch: 'full' },
+          { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ]
       }
     ])
