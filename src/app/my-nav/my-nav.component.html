@@ -12,6 +12,8 @@
       <a mat-list-item [routerLink]="['/home']">Home</a>
       <a mat-list-item [routerLink]="['/add-memory']">Add Memory</a>
       <a mat-list-item [routerLink]="['/view-memories']">View My Memories</a>
+      <a mat-list-item [routerLink]="['/about']">About</a>
+      <a mat-list-item [routerLink]="['/contact']">Contact</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -27,7 +29,6 @@
       </button>
       <span>Memories</span>
     </mat-toolbar>
-
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

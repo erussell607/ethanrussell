@@ -30,6 +30,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     MyNavComponent,
     AddMemoryComponent,
     HomeComponent,
-    ViewMemoriesComponent
+    ViewMemoriesComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
           { path: 'home', component: HomeComponent },
           { path: 'add-memory', component: AddMemoryComponent },
           { path: 'view-memories', component: ViewMemoriesComponent },
+          { path: 'about', component: AboutComponent },
+          { path: 'contact', component: ContactComponent },
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ]
