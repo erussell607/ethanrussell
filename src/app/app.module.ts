@@ -1,46 +1,42 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import {
-  MatToolbarModule,
-  MatButtonModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatListModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatSortModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatDatepickerModule,
-  MatNativeDateModule
-} from '@angular/material';
-import { AddMemoryComponent } from './add-memory/add-memory.component';
-import { HomeComponent } from './home/home.component';
-import { ViewMemoriesComponent } from './view-memories/view-memories.component';
-import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatSidenavModule,
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
 import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
-import { EffectsModule } from '@ngrx/effects';
+import { AddMemoryComponent } from './add-memory/add-memory.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { AppEffects } from './app.effects';
+import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
+import { metaReducers, reducers } from './reducers';
+import { ViewMemoriesComponent } from './view-memories/view-memories.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyNavComponent,
     AddMemoryComponent,
     HomeComponent,
     ViewMemoriesComponent,
@@ -72,22 +68,7 @@ import { AppEffects } from './app.effects';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([AppEffects]),
-    // RouterModule.forRoot([
-    //   {
-    //     path: '',
-    //     component: MyNavComponent,
-    //     children: [
-    //       { path: 'home', component: HomeComponent },
-    //       { path: 'add-memory', component: AddMemoryComponent },
-    //       { path: 'view-memories', component: ViewMemoriesComponent },
-    //       { path: 'about', component: AboutComponent },
-    //       { path: 'contact', component: ContactComponent },
-    //       { path: '', redirectTo: 'home', pathMatch: 'full' },
-    //       { path: '**', redirectTo: 'home', pathMatch: 'full' }
-    //     ]
-    //   }
-    // ])
+    EffectsModule.forRoot([AppEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
