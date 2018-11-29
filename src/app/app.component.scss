@@ -79,10 +79,11 @@ mat-sidenav-container {
     }
 
     .footer {
+      color: gainsboro !important;
       flex: 0 0 auto;
       padding: 0 15px;
       text-align: center;
-      color: #e0e0e0;
+
       background-color: #212121;
 
       .row {
@@ -93,6 +94,7 @@ mat-sidenav-container {
             transition: padding 0.5s;
             display: inline-block;
             padding: 20px 5px;
+            color: gainsboro;
 
             &:hover {
               text-decoration: none;
@@ -105,9 +107,9 @@ mat-sidenav-container {
 
             span {
               display: inline-block;
-              width: 75px;
+              // width: 75px;
               padding: 0 0 0 3px;
-              overflow: hidden;
+              // overflow: hidden;
               text-align: left;
               white-space: nowrap;
               transition: width 0.5s;
