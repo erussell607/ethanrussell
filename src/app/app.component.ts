@@ -44,4 +44,8 @@ export class AppComponent implements OnInit {
   onLoginClick() {
     this.store.dispatch(new ActionAuthLogin());
   }
+
+  onLogoutClick() {
+    this.store.dispatch(new ActionAuthLogout());
+  }
 }
