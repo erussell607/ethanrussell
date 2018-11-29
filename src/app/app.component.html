@@ -2,7 +2,8 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push">
       <div class="branding">
-        <img [src]="logo" /> <span data-testid="title">Ethan Russell</span>
+        <i class="fa fa-circle-o-notch fa-spin fa-1x fa-fw"></i>
+        <span data-testid="title">Ez Russell</span>
       </div>
       <mat-nav-list>
         <a
@@ -36,15 +37,18 @@
           </button>
 
           <span routerLink="" class="branding spacer center d-inline d-sm-none">
-            <img [src]="logo"
-          /></span>
+            <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>Ez</span
+          >
           <span
             routerLink=""
             class="branding spacer center d-none d-sm-inline d-md-none"
-            ><img [src]="logo" />Ethan Russell</span
+            ><i class="fa fa-circle-o-notch fa-spin fa-1x fa-fw"></i>Ez
+            Russell</span
           >
+
           <span routerLink="" class="branding spacer d-none d-md-inline"
-            ><img [src]="logo" />Ethan Russell</span
+            ><i class="fa fa-circle-o-notch fa-spin fa-1x fa-fw"></i>Ez
+            Russell</span
           >
 
           <span class="d-none d-md-inline">
@@ -72,12 +76,14 @@
           <button *ngIf="(isAuthenticated$ | async)" mat-icon-button>
             <span class="fas fa-user-circle"></span>
           </button>
-          <!-- <div>
-            <button mat-menu-item (click)="onLogoutClick()">
-              <span class="fas fa-power-off"></span>
-              <span>Logout</span>
-            </button>
-          </div> -->
+          <!--
+            <div>
+              <button mat-menu-item (click)="onLogoutClick()">
+                <span class="fas fa-power-off"></span>
+                <span>Logout</span>
+              </button>
+            </div>
+          -->
 
           <button
             mat-icon-button
