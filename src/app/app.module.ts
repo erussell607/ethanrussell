@@ -30,7 +30,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppEffects } from './app.effects';
 import { ContactComponent } from './contact/contact.component';
-import { HomeComponent } from './home/home.component';
 import { metaReducers, reducers } from './reducers';
 import { ViewMemoriesComponent } from './view-memories/view-memories.component';
 
@@ -38,7 +37,6 @@ import { ViewMemoriesComponent } from './view-memories/view-memories.component';
   declarations: [
     AppComponent,
     AddMemoryComponent,
-    HomeComponent,
     ViewMemoriesComponent,
     AboutComponent,
     ContactComponent

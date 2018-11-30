@@ -30,10 +30,9 @@ export class AppComponent implements OnInit {
   isAuthenticated$: Observable<boolean>;
 
   navigation = [
-    { link: 'home', label: 'Home' },
+    { link: 'about', label: 'About' },
     { link: 'add-memory', label: 'Add Memory' },
     { link: 'view-memories', label: 'View Memory' },
-    { link: 'about', label: 'About' },
     { link: 'contact', label: 'Contact' }
   ];
   navigationSideMenu = [...this.navigation];

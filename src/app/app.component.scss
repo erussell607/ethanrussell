@@ -8,6 +8,18 @@
 mat-sidenav-container {
   height: 100%;
   width: 100%;
+  mat-toolbar {
+    button {
+      &.active {
+        color: #fff;
+        background-color: #78909c;
+      }
+    }
+
+    .link {
+      color:#78909c;
+    }
+  }
 
   .toolbar {
     position: fixed;
