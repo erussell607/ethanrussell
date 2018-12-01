@@ -8,7 +8,7 @@ import {
   ViewMemoriesDataSource,
   ViewMemoriesItem
 } from './view-memories-datasource';
-import { AngularFireDatabase, AngularFireList  } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Component({
   selector: 'app-view-memories',
@@ -50,11 +50,13 @@ export class ViewMemoriesComponent implements OnInit, OnDestroy {
 
     this.itemsRef = this.db.list('memories');
     // Use snapshotChanges().map() to store the key
-    this.items = this.itemsRef.snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      )
-    );
+    this.items = this.itemsRef
+      .snapshotChanges()
+      .pipe(
+        map(changes =>
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      );
   }
 
   private deleteMemory(memory) {

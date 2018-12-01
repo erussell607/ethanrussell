@@ -12,12 +12,24 @@ mat-sidenav-container {
     button {
       &.active {
         color: #fff;
-        background-color: #78909c;
+        background-color: #424242;
       }
     }
 
     .link {
-      color:#78909c;
+      color: #ffffff;
+    }
+  }
+
+  mat-sidenav {
+    .mat-list-item {
+      &.active {
+        color: #fff;
+        background-color: #616161 !important;
+        &:hover {
+          background-color: #333333 !important;
+        }
+      }
     }
   }
 
@@ -92,16 +104,23 @@ mat-sidenav-container {
 
     .footer {
       color: gainsboro !important;
+      background-color: #212121;
       flex: 0 0 auto;
       padding: 0 15px;
       text-align: center;
-
-      background-color: #212121;
 
       .row {
         padding: 10px 0;
 
         .links {
+          .signature {
+            a {
+              color: gainsboro;
+              &:hover {
+                background-color: #424242;
+              }
+            }
+          }
           a {
             transition: padding 0.5s;
             display: inline-block;

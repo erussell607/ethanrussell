@@ -1,6 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
@@ -29,9 +29,11 @@ import { AddMemoryComponent } from './add-memory/add-memory.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppEffects } from './app.effects';
+import { ConnectionService } from './connection.service';
 import { ContactComponent } from './contact/contact.component';
 import { metaReducers, reducers } from './reducers';
 import { ViewMemoriesComponent } from './view-memories/view-memories.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { ViewMemoriesComponent } from './view-memories/view-memories.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
@@ -62,13 +65,14 @@ import { ViewMemoriesComponent } from './view-memories/view-memories.component';
     MatInputModule,
     MatDatepickerModule,
     FormsModule,
+    ReactiveFormsModule,
     MatNativeDateModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([AppEffects])
   ],
-  providers: [],
+  providers: [ConnectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
