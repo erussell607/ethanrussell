@@ -1,50 +1,35 @@
-import { ConnectionService } from './../connection.service';
-import { Component, OnInit, HostListener } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit {
-  contactForm: FormGroup;
-  disabledSubmitButton: boolean;
-  optionsSelect: Array<any>;
-
-  @HostListener('input')
-  oninput() {
-    if (this.contactForm.valid) {
-      this.disabledSubmitButton = false;
-    }
+export class ContactComponent {
+  form: FormGroup;
+  constructor(private fb: FormBuilder, private db: AngularFireDatabase) {
+    this.createForm();
   }
-  constructor(
-    private fb: FormBuilder,
-    private connectionService: ConnectionService
-  ) {
-    this.contactForm = fb.group({
-      contactFormName: ['', Validators.required],
-      contactFormEmail: [
-        '',
-        Validators.compose([Validators.required, Validators.email])
-      ],
-      contactFormSubjects: ['', Validators.required],
-      contactFormMessage: ['', Validators.required],
-      contactFormCopy: ['']
+  createForm() {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      message: ['', Validators.required]
     });
   }
-
-  ngOnInit() {}
   onSubmit() {
-    this.connectionService.sendMessage(this.contactForm.value).subscribe(
-      () => {
-        alert('Your message has been sent.');
-        this.contactForm.reset();
-        this.disabledSubmitButton = true;
-      },
-      error => {
-        console.log('Error', error);
-      }
-    );
+    const { name, email, message } = this.form.value;
+    const date = Date();
+    const html = `
+      <div>From: ${name}</div>
+      <div>Email: <a href="mailto:${email}">${email}</a></div>
+      <div>Date: ${date}</div>
+      <div>Message: ${message}</div>
+    `;
+    const formRequest = { name, email, message, date, html };
+    this.db.list('/messages').push(formRequest);
+    this.form.reset();
   }
 }
