@@ -1,11 +1,87 @@
 <div class="container">
-  <h1>Contact</h1>
-
-  <h1>Information Request</h1>
+  <div class="row">
+    <div class="col"><h1 class="main-heading">Contact</h1></div>
+  </div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input type="text" placeholder="Name" formControlName="name" />
-    <input type="text" placeholder="Email" formControlName="email" />
-    <textarea placeholder="Message" formControlName="message"></textarea>
-    <button type="submit" [disabled]="form.invalid">Submit</button>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <mat-card>
+          <span class="d-flex justify-content-between align-items-baseline">
+            <h2>Please Enter</h2>
+          </span>
+
+          <div class="row">
+            <mat-form-field class="col" [ngClass]="routeAnimationsElements">
+              <input matInput placeholder="Name" formControlName="name" />
+              <mat-error *ngIf="form.get('name').invalid">
+                Name is requried
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col" [ngClass]="routeAnimationsElements">
+              <input
+                matInput
+                placeholder="E-mail"
+                formControlName="email"
+                type="email"
+              />
+              <mat-error *ngIf="form.get('email').hasError('required')">
+                E-mail is requried
+              </mat-error>
+              <mat-error *ngIf="form.get('email').hasError('email')">
+                E-mail should be valid</mat-error
+              >
+            </mat-form-field>
+          </div>
+
+          <div class="row">
+            <mat-form-field class="col" [ngClass]="routeAnimationsElements">
+              <textarea
+                matInput
+                placeholder="Message"
+                formControlName="message"
+                minlength="10"
+                maxlength="1000"
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="3"
+                cdkAutosizeMaxRows="10"
+              ></textarea>
+              <mat-hint align="end"
+                >{{ form.get('message').value?.length }} / 1000</mat-hint
+              >
+              <mat-error *ngIf="form.get('message').hasError('required')">
+                Message is required
+              </mat-error>
+              <mat-error *ngIf="form.get('message').hasError('minlength')">
+                Message shoud be longer than 10
+              </mat-error>
+              <mat-error *ngIf="form.get('message').hasError('maxlength')">
+                Message should be shorter than 1000
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="row buttons d-flex justify-content-between pad">
+            <button
+              type="submit"
+              [disabled]="form.invalid"
+              mat-raised-button
+              color="primary"
+              [ngClass]="routeAnimationsElements"
+            >
+              Send
+            </button>
+            <button
+              type="reset"
+              mat-raised-button
+              (click)="reset()"
+              [ngClass]="routeAnimationsElements"
+            >
+              Reset
+            </button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
   </form>
 </div>
