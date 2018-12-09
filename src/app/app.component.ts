@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment as env } from './../environments//environment';
+import { OktaAuthService } from '@okta/okta-angular';
 import { Store, select } from '@ngrx/store';
 
 import {
@@ -27,7 +28,8 @@ export class AppComponent implements OnInit {
   version = env.versions.app;
 
   year = new Date().getFullYear();
-  isAuthenticated$: Observable<boolean>;
+  // isAuthenticated$: Observable<boolean>;
+  isAuthenticated: boolean;
 
   navigation = [
     { link: 'about', label: 'About' },
@@ -37,15 +39,33 @@ export class AppComponent implements OnInit {
   ];
   navigationSideMenu = [...this.navigation];
 
-  constructor(private store: Store<AppState>) {}
-
-  ngOnInit(): void {}
+  constructor(public oktaAuth: OktaAuthService) {
+    // Subscribe to authentication state changes
+    this.oktaAuth.$authenticationState.subscribe(
+      (isAuthenticated: boolean) => (this.isAuthenticated = isAuthenticated)
+    );
+  }
 
   onLoginClick() {
-    this.store.dispatch(new ActionAuthLogin());
+    alert('Login');
+    // this.store.dispatch(new ActionAuthLogin());
   }
 
   onLogoutClick() {
-    this.store.dispatch(new ActionAuthLogout());
+    alert('Logout');
+    // this.store.dispatch(new ActionAuthLogout());
+  }
+
+  async ngOnInit() {
+    // Get the authentication state for immediate use
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+  }
+
+  login() {
+    this.oktaAuth.loginRedirect('/about');
+  }
+
+  logout() {
+    this.oktaAuth.logout('/');
   }
 }

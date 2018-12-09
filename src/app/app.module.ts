@@ -34,6 +34,9 @@ import { ContactComponent } from './contact/contact.component';
 import { metaReducers, reducers } from './reducers';
 import { ViewMemoriesComponent } from './view-memories/view-memories.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatMenuModule } from '@angular/material/menu';
+import { OktaAuthModule, OktaCallbackComponent } from '@okta/okta-angular';
+
 
 @NgModule({
   declarations: [
@@ -64,6 +67,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
+    MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
