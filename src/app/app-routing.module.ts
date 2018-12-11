@@ -5,6 +5,7 @@ import { ViewMemoriesComponent } from './view-memories/view-memories.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { OktaCallbackComponent, OktaAuthModule } from '@okta/okta-angular';
+import { OktaAuthGuard } from '@okta/okta-angular';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'view-memories',
-    component: ViewMemoriesComponent
+    component: ViewMemoriesComponent,
+    canActivate: [OktaAuthGuard]
   },
 
   {
@@ -39,9 +41,14 @@ const routes: Routes = [
     pathMatch: 'full'
   }
 ];
-const config = {
+const configProd = {
   issuer: 'https://dev-901629.oktapreview.com/oauth2/default',
-  redirectUri: 'http://ethanrussell.me/implicit/callback',
+  redirectUri: 'https://ethanrussell.me/implicit/callback',
+  clientId: '0oai5wwr64zB6q2A40h7'
+};
+const configDev = {
+  issuer: 'https://dev-901629.oktapreview.com/oauth2/default',
+  redirectUri: 'http://localhost:4200/implicit/callback',
   clientId: '0oai5wwr64zB6q2A40h7'
 };
 
@@ -51,7 +58,7 @@ const config = {
       useHash: false,
       scrollPositionRestoration: 'enabled'
     }),
-    OktaAuthModule.initAuth(config)
+    OktaAuthModule.initAuth(configProd)
   ],
   exports: [RouterModule]
 })

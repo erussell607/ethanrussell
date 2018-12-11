@@ -36,6 +36,7 @@
     "@okta/okta-angular": "^1.0.7",
     "angular-bootstrap-md": "^7.0.0",
     "angular-font-awesome": "^3.1.2",
+    "angular-oauth2-oidc": "^5.0.2",
     "angularfire2": "^5.1.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
