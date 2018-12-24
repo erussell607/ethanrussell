@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+.mat-snack-bar-container {
+  color: rgba(0, 0, 0, 0.87) !important;
+  background-color: #66bb6a !important;
+}
+
 mat-sidenav-container {
   height: 100%;
   width: 100%;
@@ -103,6 +108,7 @@ mat-sidenav-container {
     }
 
     .footer {
+      z-index: 1;
       color: gainsboro !important;
       background-color: #212121;
       flex: 0 0 auto;

@@ -58,13 +58,20 @@
     background-color: mat-color($accent);
   }
 
-  .success-notification-overlay {
-    color: mat-color($success-colors, default-contrast);
-    background-color: mat-color($success-colors);
-  }
 
   .warning-notification-overlay {
     color: mat-color($warning-colors, default-contrast);
     background-color: mat-color($warning-colors);
   }
+
+  .success-notification-overlay {
+    color: rgba(0, 0, 0, 0.87) !important;
+    background-color: #66bb6a !important;
+  }
+
+  .mat-snack-bar-container {
+    color: rgba(0, 0, 0, 0.87) !important;
+    background-color: #66bb6a !important;
+  }
+
 }

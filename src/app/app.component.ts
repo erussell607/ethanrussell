@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
     { link: 'add-memory', label: 'Add Feature' },
     { link: 'view-memories', label: 'View Features' },
     { link: 'contact', label: 'Contact' }
+    { link: 'haywalz', label: 'HayWalz' }
   ];
   navigationSideMenu = [...this.navigation];
 

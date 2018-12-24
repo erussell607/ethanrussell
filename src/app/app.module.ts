@@ -14,7 +14,8 @@ import {
   MatSidenavModule,
   MatSortModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +37,7 @@ import { ViewMemoriesComponent } from './view-memories/view-memories.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { OktaAuthModule, OktaCallbackComponent } from '@okta/okta-angular';
+import { HaywalzComponent } from './haywalz/haywalz.component';
 
 
 @NgModule({
@@ -44,10 +46,12 @@ import { OktaAuthModule, OktaCallbackComponent } from '@okta/okta-angular';
     AddMemoryComponent,
     ViewMemoriesComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    HaywalzComponent
   ],
   imports: [
     BrowserModule,
+    MatSnackBarModule,
     HttpClientModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

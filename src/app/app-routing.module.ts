@@ -1,3 +1,4 @@
+import { HaywalzComponent } from './haywalz/haywalz.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddMemoryComponent } from './add-memory/add-memory.component';
@@ -30,10 +31,13 @@ const routes: Routes = [
     component: ViewMemoriesComponent,
     canActivate: [OktaAuthGuard]
   },
-
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'haywalz',
+    component: HaywalzComponent
   },
   {
     path: '**',
